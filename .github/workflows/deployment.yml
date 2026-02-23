@@ -1,0 +1,42 @@
+name: Deploy Project
+on: push # event trigger 
+jobs:
+  test: # job label you can have any name you want aside from "test"
+    runs-on: ubuntu-latest
+    steps: # list steps of actions labeled with the ff Get Code, Instal NodeJs, Install nodejs dependencies and Run Test
+      - name: Get Code # step 1  
+        uses: actions/checkout@v3 # refer to github docs for any built in github actions checkout
+      - name: Install NodeJs # step 2
+        uses: actions/setup-node@v3 # refer to github docs for any built in github actions install nodejs
+        with: # step 2 configuration
+          node-version: 18
+      - name: Install NodeJs dependencies # step 3
+        run: npm ci # ci is much safer than install because it will refer into package-lock.json
+      - name: Run Test # step 4
+        run: npm test
+        
+  deploy: # job label you can have any name you want aside from "deploy"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code # step 1  
+        uses: actions/checkout@v3 # refer to github docs for any built in github actions checkout
+
+      - name: Install NodeJs # step 2
+        uses: actions/setup-node@v3 # refer to github docs for any built in github actions install nodejs
+        with: # step 2 configuration
+          node-version: 18
+
+      - name: Install NodeJs dependencies # step 3
+        run: npm ci # ci is much safer than install because it will refer into package-lock.json
+      
+      - name: Build Project
+        run: npm run build
+      
+      - name: Deploy
+        run: echo "Deploying.."
+
+
+
+        
+
+
