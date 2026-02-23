@@ -2,12 +2,12 @@ name: Project Test
 on: push # event trigger 
 jobs:
   test:
-    run-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps: # list steps of actions labeled with the ff Get Code, Instal NodeJs, Install nodejs dependencies and Run Test
       - name: Get Code # step 1  
         uses: actions/checkout@v3 # refer to github docs for any built in github actions checkout
       - name: Install NodeJs # step 2
-        uses: actions/setup-nodejs@v3 # refer to github docs for any built in github actions install nodejs
+        uses: actions/setup-node@v3 # refer to github docs for any built in github actions install nodejs
         with: # step 2 configuration
           node-version: 18
       - name: Install NodeJs dependencies # step 3
