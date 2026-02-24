@@ -1,5 +1,5 @@
 name: Deploy Project
-on: push # event trigger 
+on: [push,workflow_dispatch] # event multiple trigger 
 jobs:
   test: # job label you can have any name you want aside from "test"
     runs-on: ubuntu-latest
