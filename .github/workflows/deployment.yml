@@ -16,6 +16,7 @@ jobs:
         run: npm test
         
   deploy: # job label you can have any name you want aside from "deploy"
+    needs: test # sequential deployment (this wont run when test job is broke)
     runs-on: ubuntu-latest
     steps:
       - name: Get Code # step 1  
